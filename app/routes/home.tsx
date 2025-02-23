@@ -1,14 +1,15 @@
+import type { FC } from "react";
 import { Welcome } from "../welcome/welcome";
 import type { Route } from "./+types/home";
 
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
-export function meta({}: Route.MetaArgs) {
-	return [
-		{ title: "New React Router App" },
-		{ name: "description", content: "Welcome to React Router!" },
-	];
-}
+export const meta = ({}: Route.MetaArgs) => [
+	{ title: "New React Router App" },
+	{ name: "description", content: "Welcome to React Router!" },
+];
 
-export default function Home() {
+const Home: FC = () => {
 	return <Welcome />;
-}
+};
+
+export default Home;

@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import type { ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,7 +24,11 @@ export const links: Route.LinksFunction = () => [
 	},
 ];
 
-export function Layout({ children }: { children: ReactNode }) {
+type LayoutProps = {
+	children: ReactNode;
+};
+
+export const Layout: FC<LayoutProps> = ({ children }) => {
 	return (
 		<html lang="en">
 			<head>
@@ -40,13 +44,15 @@ export function Layout({ children }: { children: ReactNode }) {
 			</body>
 		</html>
 	);
-}
+};
 
-export default function App() {
+const App: FC = () => {
 	return <Outlet />;
-}
+};
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export default App;
+
+export const ErrorBoundary: FC<Route.ErrorBoundaryProps> = ({ error }) => {
 	let message = "Oops!";
 	let details = "An unexpected error occurred.";
 	let stack: string | undefined;
@@ -73,4 +79,4 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 			)}
 		</main>
 	);
-}
+};
