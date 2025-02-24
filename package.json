@@ -13,6 +13,7 @@
 		"check": "bunx biome check --write ./"
 	},
 	"dependencies": {
+		"@react-router/fs-routes": "^7.2.0",
 		"@react-router/node": "^7.2.0",
 		"@react-router/serve": "^7.2.0",
 		"isbot": "^5.1.17",
