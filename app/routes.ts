@@ -20,5 +20,6 @@ export default [
 			route(":pid/edit", "./projects/edit-project.tsx"),
 		]),
 	]),
+	route("files/*", "./files.tsx"),
 	...(await flatRoutes()),
 ] satisfies RouteConfig;
