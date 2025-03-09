@@ -11,17 +11,13 @@ export default [
 		layout("./routes/layout.tsx", [
 			index("./routes/main.tsx"),
 			route("projects/new", "./routes/projects/new.tsx"),
-			route(":kjcd/building/:building-id/drawings", "./routes/drawings.tsx"),
-			route(
-				":kjcd/building/:building-id/fabrication",
-				"./routes/fabrication.tsx",
-			),
-			route(
-				":kjcd/building/:building-id/construction",
-				"./routes/construction.tsx",
-			),
-			route(":kjcd/building/:building-id/master", "./routes/master.tsx"),
-			route(":kjcd/building/:building-id/chart", "./routes/chart.tsx"),
+			...prefix(":kjcd/building/:building-id", [
+				route("drawings", "./routes/drawings.tsx"),
+				route("fabrication", "./routes/fabrication.tsx"),
+				route("construction", "./routes/construction.tsx"),
+				route("master", "./routes/master.tsx"),
+				route("chart", "./routes/chart.tsx"),
+			]),
 		]),
 	]),
 ] satisfies RouteConfig;
