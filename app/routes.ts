@@ -5,21 +5,23 @@ import {
 	prefix,
 	route,
 } from "@react-router/dev/routes";
-import { flatRoutes } from "@react-router/fs-routes";
 
 export default [
-	route("/test/app", "./test-in-app.tsx"),
-	layout("./marketing/layout.tsx", [
-		index("./marketing/home.tsx"),
-		route("contact", "./marketing/contact.tsx"),
-	]),
-	...prefix("projects", [
-		index("./projects/home.tsx"),
-		layout("./projects/project-layout.tsx", [
-			route(":pid", "./projects/project.tsx"),
-			route(":pid/edit", "./projects/edit-project.tsx"),
+	...prefix("main", [
+		layout("./routes/layout.tsx", [
+			index("./routes/main.tsx"),
+			route("projects/new", "./routes/projects/new.tsx"),
+			route(":kjcd/building/:building-id/drawings", "./routes/drawings.tsx"),
+			route(
+				":kjcd/building/:building-id/fabrication",
+				"./routes/fabrication.tsx",
+			),
+			route(
+				":kjcd/building/:building-id/construction",
+				"./routes/construction.tsx",
+			),
+			route(":kjcd/building/:building-id/master", "./routes/master.tsx"),
+			route(":kjcd/building/:building-id/chart", "./routes/chart.tsx"),
 		]),
 	]),
-	route("files/*", "./files.tsx"),
-	...(await flatRoutes()),
 ] satisfies RouteConfig;
